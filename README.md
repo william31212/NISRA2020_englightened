@@ -13,8 +13,8 @@
 - 全部環境
     `docker-compose up -d`
 - xss題目
-    * `到setting的webdrive_install.sh`安裝`PhantomJS`
-    * 接著開著`python3 bot.py`
+    * `webdrive_install.sh`安裝`PhantomJS`
+    * 接著開著`python3 xss_ctf/bot/bot.py`
 
 
 ## Info-Leakage

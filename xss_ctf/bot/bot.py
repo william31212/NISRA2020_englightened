@@ -3,8 +3,6 @@ import time
 from selenium import webdriver
 
 url = "http://45.76.106.93:7778/Addddddddddddddmin.php"
-url_google = "https://www.google.com"
-
 options = webdriver.ChromeOptions()
 options.add_argument('headless')
 options.add_argument('no-sandbox')
