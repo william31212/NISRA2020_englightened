@@ -15,7 +15,8 @@
 - xss題目
     * `webdrive_install.sh`安裝`PhantomJS`
     * 接著開著`python3 xss_ctf/bot/bot.py`
-
+    
+| WARNING: 現在正在移植bot到container中 |
 
 ## Info-Leakage
 
