@@ -1,13 +1,23 @@
-FROM python:3
+FROM python:3.7
 
-WORKDIR /usr/src/app
+WORKDIR /app
 
-COPY src/requirements.txt .
-RUN apt install chromium-chromedriver 
-RUN pip install --no-cache-dir -r requirements.txt
-RUN wget https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2
-RUN tar xvjf phantomjs-2.1.1-linux-x86_64.tar.bz2
-RUN cp phantomjs-2.1.1-linux-x86_64/bin/phantomjs /usr/local/bin/
+# install google chrome
+RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+RUN sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+RUN apt -y update
+RUN apt install -y google-chrome-stable
 
-CMD [ "python", "./bot.py" ]
+# install chromedriver
+RUN apt install -yqq unzip
+RUN wget -O /tmp/chromedriver.zip http://chromedriver.storage.googleapis.com/`curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE`/chromedriver_linux64.zip
+RUN unzip /tmp/chromedriver.zip chromedriver -d /usr/local/bin/
 
+# set display port to avoid crash
+ENV DISPLAY=:99
+
+# install selenium
+RUN pip install selenium==3.8.0
+RUN pip install requests==2.24.0
+
+CMD ["python", "bot.py"]

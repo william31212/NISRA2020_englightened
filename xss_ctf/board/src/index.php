@@ -24,7 +24,8 @@ $user = $_COOKIE['USERSESSID'];
 // check the admin's cookie
 if($user === "GuvfvfnqzvapbbxvrGuvfvfnqzvapbbxvr") {
     echo "您是管理員，歡迎回來<br>";
-    echo "NISRA{You_CAN_use_thhhhhhhhhhhhhhhhhhhe_xssssssss_la}";
+    echo "NISRA{You_CAN_use_thhhhhhhhhhhhhhhhhhhe_xssssssss_la}<br>";
+    echo "-------------------------------------------------<br>";
 }
 else {
     echo "你是一般的使用者，只有留言功能<br>";

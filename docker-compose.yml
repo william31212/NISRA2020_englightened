@@ -1,24 +1,30 @@
 version: "3.3"
 
 services:
-  # bot:
-  #   build: ./xss_ctf/bot
-  #   volumes:
-  #     - ./xss_ctf/bot/src:/usr/src/app
+  bot:
+    build: ./xss_ctf/bot
+    environment:
+      - "HOST=45.76.106.93"
+      - "PORT=10000"
+      - "URL=Addddddddddddddmin.php"
+
   xss:
     build: ./xss_ctf/board
     ports:
       - "10000:80"
     restart: always
+    environment:
+      - "HOST=45.76.106.93"
+      - "PORT=10000"
     volumes:
       - ./xss_ctf/board/src:/var/www/html
-  # db:
-  #   image: mysql:5.6
-  #   ports:
-  #       - "10001:3306"
-  #   environment:
-  #       - MYSQL_ROOT_PASSWORD=donttouchme
-  #       - MYSQL_DATABASE=testdb
+  db:
+    build: ./xss_ctf/db
+    ports:
+        - "10001:3306"
+    environment:
+        - MYSQL_ROOT_PASSWORD=donttouchme
+        - MYSQL_DATABASE=testdb
   wayback:
     image: nginx:latest
     ports:
