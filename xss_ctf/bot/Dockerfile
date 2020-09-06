@@ -2,6 +2,8 @@ FROM python:3.7
 
 WORKDIR /app
 
+COPY src/bot.py /app/bot.py
+
 # install google chrome
 RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
 RUN sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
@@ -19,5 +21,6 @@ ENV DISPLAY=:99
 # install selenium
 RUN pip install selenium==3.8.0
 RUN pip install requests==2.24.0
+
 
 CMD ["python", "bot.py"]
