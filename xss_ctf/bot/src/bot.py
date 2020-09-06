@@ -26,5 +26,5 @@ while True:
         print(e)
     driver.quit()
     
-    time.sleep(1)
+    time.sleep(15)
     
