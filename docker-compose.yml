@@ -21,8 +21,6 @@ services:
       - ./xss_ctf/board/src:/var/www/html
   db:
     build: ./xss_ctf/db
-    ports:
-        - "10001:3306"
     restart: always
     environment:
         - MYSQL_ROOT_PASSWORD=donttouchme
