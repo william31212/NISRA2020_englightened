@@ -8,12 +8,16 @@ services:
       - "HOST=xss"
       - "PORT=80"
       - "URL=Addddddddddddddmin.php"
-
+    depends_on:
+      - db
+      - xss
   xss:
     build: ./xss_ctf/board
     ports:
       - "10000:80"
     restart: always
+    depends_on:
+      - db
   db:
     build: ./xss_ctf/db
     restart: always
