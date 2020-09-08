@@ -1,17 +1,13 @@
-import time
-import requests
+import time, requests, os
 from selenium import webdriver
-import os
 
 host = os.environ.get('HOST', default='45.76.106.93')
 port = os.environ.get('PORT', default='10000')
 route = os.environ.get('URL', default='Addddddddddddddmin.php')
 
-print('{} {} {}'.format(host, port , route), flush=True)
-
 url = f"http://{host}:{port}/{route}"
-
 print(url, flush=True)
+
 chrome_options = webdriver.ChromeOptions()
 chrome_options.add_argument('--no-sandbox')
 chrome_options.add_argument('--headless')
