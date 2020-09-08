@@ -13,15 +13,22 @@ chrome_options.add_argument('--no-sandbox')
 chrome_options.add_argument('--headless')
 chrome_options.add_argument('--disable-gpu')
 
+admin_cookie = {
+    'name': 'USERSESSID',
+    'value': 'GuvfvfnqzvapbbxvrGuvfvfnqzvapbbxvr',
+}
+
 while True:
-    driver = webdriver.Chrome(chrome_options=chrome_options)
+    browser = webdriver.Chrome(chrome_options=chrome_options)
     try:
-        driver.get(url)
+        browser.get(url)
+        browser.add_cookie(admin_cookie)
+        browser.get(url)
         time.sleep(5)
         print(f'Access {url}', flush=True)
     except Exception as e:
         print(e, flush=True)
-    driver.quit()
+    browser.quit()
 
     time.sleep(5)
 
