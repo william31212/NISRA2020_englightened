@@ -7,11 +7,11 @@ host = os.environ.get('HOST', default='45.76.106.93')
 port = os.environ.get('PORT', default='10000')
 route = os.environ.get('URL', default='Addddddddddddddmin.php')
 
-print('{} {} {}'.format(host, port , route))
+print('{} {} {}'.format(host, port , route), flush=True)
 
 url = f"http://{host}:{port}/{route}"
 
-print(url)
+print(url, flush=True)
 chrome_options = webdriver.ChromeOptions()
 chrome_options.add_argument('--no-sandbox')
 chrome_options.add_argument('--headless')
@@ -21,10 +21,10 @@ while True:
     driver = webdriver.Chrome(chrome_options=chrome_options)
     try:
         driver.get(url)
-        print(f'Access {url}')
+        print(f'Access {url}', flush=True)
     except Exception as e:
-        print(e)
+        print(e, flush=True)
     driver.quit()
-    
+
     time.sleep(15)
-    
+
