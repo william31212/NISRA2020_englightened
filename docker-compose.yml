@@ -14,11 +14,6 @@ services:
     ports:
       - "10000:80"
     restart: always
-    environment:
-      - "HOST=45.76.106.93"
-      - "PORT=10000"
-    volumes:
-      - ./xss_ctf/board/src:/var/www/html
   db:
     build: ./xss_ctf/db
     restart: always
