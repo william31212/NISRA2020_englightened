@@ -17,10 +17,11 @@ while True:
     driver = webdriver.Chrome(chrome_options=chrome_options)
     try:
         driver.get(url)
+        time.sleep(5)
         print(f'Access {url}', flush=True)
     except Exception as e:
         print(e, flush=True)
     driver.quit()
 
-    time.sleep(15)
+    time.sleep(5)
 
