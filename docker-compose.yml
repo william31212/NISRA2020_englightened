@@ -3,6 +3,7 @@ version: "3.3"
 services:
   bot:
     build: ./xss_ctf/bot
+    restart: always
     environment:
       - "HOST=xss"
       - "PORT=80"
@@ -22,6 +23,7 @@ services:
     build: ./xss_ctf/db
     ports:
         - "10001:3306"
+    restart: always
     environment:
         - MYSQL_ROOT_PASSWORD=donttouchme
         - MYSQL_DATABASE=testdb
