@@ -12,9 +12,9 @@ echo "<!-- Only xss, no command injection or sql injection la....... -->";
 ?>
 
 <form method="POST">
-  <label for="fname">寫下你想留的話:</label><br>
-  <input type="text" id="content" name="content">
-  <input type="submit" value="提交">
+    <label for="fname">寫下你想留的話:</label><br>
+    <input type="text" id="content" name="content">
+    <input type="submit" value="提交">
 </form>
 
 
@@ -37,7 +37,7 @@ if(isset($_POST['content']) && !empty($_POST['content']))
     $user = $_COOKIE['USERSESSID'];
     $message = $_POST['content'];
     // echo $user." ".$message."<br>";
-    
+
     $stmt = $conn->prepare('insert into comment(user, content) values (?, ?)');
     $stmt->bind_param('ss',$user,$message);
     $check = $stmt->execute();
