@@ -4,8 +4,8 @@ services:
   bot:
     build: ./xss_ctf/bot
     environment:
-      - "HOST=45.76.106.93"
-      - "PORT=10000"
+      - "HOST=xss"
+      - "PORT=80"
       - "URL=Addddddddddddddmin.php"
 
   xss:
