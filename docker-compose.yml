@@ -5,13 +5,13 @@ services:
     build: ./xss_ctf/bot
     restart: always
     environment:
-      - "HOST=xss"
-      - "PORT=80"
-      - "URL=Addddddddddddddmin.php"
-      - WAIT_HOSTS=db:3306
-      - WAIT_HOSTS_TIMEOUT=300
-      - WAIT_SLEEP_INTERVAL=30
-      - WAIT_HOST_CONNECT_TIMEOUT=30
+      HOST: xss
+      PORT: 80
+      URL: Addddddddddddddmin.php
+      WAIT_HOSTS: db:3306
+      WAIT_HOSTS_TIMEOUT: 300
+      WAIT_SLEEP_INTERVAL: 30
+      WAIT_HOST_CONNECT_TIMEOUT: 30
     depends_on:
       - db
       - xss
@@ -26,8 +26,8 @@ services:
     build: ./xss_ctf/db
     restart: always
     environment:
-        - MYSQL_ROOT_PASSWORD=donttouchme
-        - MYSQL_DATABASE=testdb
+      MYSQL_ROOT_PASSWORD: donttouchme
+      MYSQL_DATABASE: testdb
 
   wayback:
     image: nginx:latest
