@@ -4,7 +4,6 @@ WORKDIR /app
 COPY src/bot.py /app/bot.py
 
 # install selenium
-RUN pip install selenium==3.8.0
-RUN pip install requests==2.24.0
+RUN pip install selenium==3.8.0 requests==2.24.0
 
 CMD ["python", "bot.py"]
