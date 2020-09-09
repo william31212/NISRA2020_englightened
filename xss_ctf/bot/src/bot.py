@@ -15,7 +15,7 @@ chrome_options.add_argument('--disable-gpu')
 
 admin_cookie = {
     'name': 'USERSESSID',
-    'value': 'GuvfvfnqzvapbbxvrGuvfvfnqzvapbbxvr',
+    'value': os.environ['ADMIN_COOKIE'],
 }
 
 while True:

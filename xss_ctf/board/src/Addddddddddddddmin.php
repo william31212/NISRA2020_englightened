@@ -1,5 +1,5 @@
 <?php
-if($_COOKIE['USERSESSID'] !== "GuvfvfnqzvapbbxvrGuvfvfnqzvapbbxvr") {
+if($_COOKIE['USERSESSID'] !== $_ENV['ADMIN_COOKIE']) {
     die("You're not admin!");
 } else {
     require_once('db_connection.php');

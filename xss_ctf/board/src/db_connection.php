@@ -1,7 +1,7 @@
 <?php
 $servername = "db:3306";
 $username = "root";
-$password = "donttouchme";
-$dbname = "testdb";
+$password = $_ENV["MYSQL_ROOT_PASSWORD"];
+$dbname = $_ENV["MYSQL_DATABASE"];
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 ?>

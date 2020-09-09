@@ -22,7 +22,7 @@ echo "<!-- Only xss, no command injection or sql injection la....... -->";
 
 $user = $_COOKIE['USERSESSID'];
 // check the admin's cookie
-if($user === "GuvfvfnqzvapbbxvrGuvfvfnqzvapbbxvr") {
+if($user === $_ENV['ADMIN_COOKIE']) {
     echo "您是管理員，歡迎回來<br>";
     echo "NISRA{You_CAN_use_thhhhhhhhhhhhhhhhhhhe_xssssssss_la}<br>";
     echo "-------------------------------------------------<br>";

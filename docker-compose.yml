@@ -8,6 +8,7 @@ services:
       HOST: xss
       PORT: 80
       URL: Addddddddddddddmin.php
+      ADMIN_COOKIE: $ADMIN_COOKIE
       WAIT_HOSTS: db:3306
       WAIT_HOSTS_TIMEOUT: 300
       WAIT_SLEEP_INTERVAL: 30
@@ -20,14 +21,18 @@ services:
     ports:
       - "10000:80"
     restart: always
+    environment:
+      ADMIN_COOKIE: $ADMIN_COOKIE
+      MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
+      MYSQL_DATABASE: $MYSQL_DATABASE
     depends_on:
       - db
   db:
     build: ./xss_ctf/db
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: donttouchme
-      MYSQL_DATABASE: testdb
+      MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
+      MYSQL_DATABASE: $MYSQL_DATABASE
 
   wayback:
     image: nginx:latest
