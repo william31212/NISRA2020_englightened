@@ -19,7 +19,7 @@ services:
   xss:
     build: ./xss_ctf/board
     ports:
-      - "10000:80"
+      - 10000:80
     restart: always
     environment:
       ADMIN_COOKIE: $ADMIN_COOKIE
@@ -37,6 +37,6 @@ services:
   wayback:
     image: nginx:latest
     ports:
-      - "10002:80"
+      - 10002:80
     volumes:
       - ./wayback/src:/usr/share/nginx/html:ro
