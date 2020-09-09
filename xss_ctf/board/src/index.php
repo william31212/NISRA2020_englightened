@@ -6,10 +6,12 @@ require_once('db_connection.php');
 if(!isset($_COOKIE["USERSESSID"])){
     setcookie('USERSESSID', md5(uniqid(rand(), true)));
     header("Location: /");
+    die();
 }
 
-echo "<!-- Only xss, no command injection or sql injection la....... -->";
 ?>
+
+<!-- Only xss, no command injection or sql injection la....... -->
 
 <form method="POST">
     <label for="fname">寫下你想留的話:</label><br>
