@@ -5,9 +5,9 @@ services:
     build: ./xss_ctf/bot
     restart: always
     environment:
-      HOST: xss
-      PORT: 80
-      URL: Addddddddddddddmin.php
+      WEB_HOST: xss
+      WEB_PORT: 80
+      WEB_URL: Addddddddddddddmin.php
       ADMIN_COOKIE: $ADMIN_COOKIE
       WAIT_HOSTS: db:3306
       WAIT_HOSTS_TIMEOUT: 300
@@ -23,6 +23,7 @@ services:
     restart: always
     environment:
       ADMIN_COOKIE: $ADMIN_COOKIE
+      MYSQL_HOST: db
       MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
       MYSQL_DATABASE: $MYSQL_DATABASE
     depends_on:
