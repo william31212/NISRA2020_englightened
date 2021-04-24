@@ -1,26 +1,14 @@
-FROM python:3.7
+FROM joyzoursky/python-chromedriver:3.7
 
 WORKDIR /app
-
 COPY src/bot.py /app/bot.py
 
-# install google chrome
-RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
-RUN sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
-RUN apt -y update
-RUN apt install -y google-chrome-stable
-
-# install chromedriver
-RUN apt install -yqq unzip
-RUN wget -O /tmp/chromedriver.zip http://chromedriver.storage.googleapis.com/`curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE`/chromedriver_linux64.zip
-RUN unzip /tmp/chromedriver.zip chromedriver -d /usr/local/bin/
-
-# set display port to avoid crash
-ENV DISPLAY=:99
-
 # install selenium
-RUN pip install selenium==3.8.0
-RUN pip install requests==2.24.0
+RUN pip install selenium==3.8.0 requests==2.24.0 mysql-connector-python
 
+# Add docker-compose-wait tool
+ENV WAIT_VERSION 2.7.2
+ADD https://github.com/ufoscout/docker-compose-wait/releases/download/$WAIT_VERSION/wait /wait
+RUN chmod +x /wait
 
-CMD ["python", "bot.py"]
+CMD ["sh", "-c", "/wait && python bot.py"]

@@ -6,15 +6,17 @@ require_once('db_connection.php');
 if(!isset($_COOKIE["USERSESSID"])){
     setcookie('USERSESSID', md5(uniqid(rand(), true)));
     header("Location: /");
+    die();
 }
 
-echo "<!-- Only xss, no command injection or sql injection la....... -->";
 ?>
 
+<!-- Only xss, no command injection or sql injection la....... -->
+
 <form method="POST">
-  <label for="fname">寫下你想留的話:</label><br>
-  <input type="text" id="content" name="content">
-  <input type="submit" value="提交">
+    <label for="fname">寫下你想留的話:</label><br>
+    <input type="text" id="content" name="content">
+    <input type="submit" value="提交">
 </form>
 
 
@@ -22,7 +24,7 @@ echo "<!-- Only xss, no command injection or sql injection la....... -->";
 
 $user = $_COOKIE['USERSESSID'];
 // check the admin's cookie
-if($user === "GuvfvfnqzvapbbxvrGuvfvfnqzvapbbxvr") {
+if($user === $_ENV['ADMIN_COOKIE']) {
     echo "您是管理員，歡迎回來<br>";
     echo "NISRA{You_CAN_use_thhhhhhhhhhhhhhhhhhhe_xssssssss_la}<br>";
     echo "-------------------------------------------------<br>";
@@ -37,7 +39,7 @@ if(isset($_POST['content']) && !empty($_POST['content']))
     $user = $_COOKIE['USERSESSID'];
     $message = $_POST['content'];
     // echo $user." ".$message."<br>";
-    
+
     $stmt = $conn->prepare('insert into comment(user, content) values (?, ?)');
     $stmt->bind_param('ss',$user,$message);
     $check = $stmt->execute();
